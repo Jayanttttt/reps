@@ -1,0 +1,7 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name">REPS</string>
+    <string name="title_activity_main">REPS</string>
+    <string name="package_name">com.reps.fitnesstracker</string>
+    <string name="custom_url_scheme">com.reps.fitnesstracker</string>
+</resources>

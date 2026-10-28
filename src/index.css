@@ -1,0 +1,397 @@
+@import "tailwindcss";
+
+/* ============================================================
+   REPS Theme Engine - Dark & Light Design System
+   Configurable in src/shared/theme/themeConfig.ts
+   ============================================================ */
+
+:root {
+  --bg-app: transparent;
+  --bg-app-canvas: #050505;
+  --bg-card: rgba(0, 0, 0, 0.45);
+  --border-card: rgba(255, 255, 255, 0.1);
+  --text-primary: #ffffff;
+  --text-secondary: #cbd5e1;
+  --text-muted: #94a3b8;
+  --primary: #dc2626;
+  --primary-hover: #ef4444;
+}
+
+[data-theme='light'] {
+  --bg-app: #F6F8FB;
+  --bg-app-canvas: #F6F8FB;
+  --bg-card: rgba(255, 255, 255, 0.78);
+  --border-card: rgba(255, 255, 255, 0.85);
+  --text-primary: #1A2238;
+  --text-secondary: #334155;
+  --text-muted: #475569;
+  --primary: #FF5B45;
+  --primary-hover: #E84D37;
+}
+
+/* Dark mode text shadows for video background legibility */
+[data-theme='dark'] body,
+[data-theme='dark'] button,
+[data-theme='dark'] input,
+[data-theme='dark'] select,
+[data-theme='dark'] textarea {
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.75), 0 2px 6px rgba(0, 0, 0, 0.6);
+}
+
+/* Light mode crisp clean typography (zero text-shadow) */
+[data-theme='light'] body,
+[data-theme='light'] button,
+[data-theme='light'] input,
+[data-theme='light'] select,
+[data-theme='light'] textarea,
+[data-theme='light'] h1,
+[data-theme='light'] h2,
+[data-theme='light'] h3,
+[data-theme='light'] h4,
+[data-theme='light'] h5,
+[data-theme='light'] p,
+[data-theme='light'] span {
+  text-shadow: none !important;
+}
+
+/* ============================================================
+   Cards & Surfaces
+   ============================================================ */
+
+.glass-card {
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.06) 0%, rgba(0, 0, 0, 0.16) 100%);
+  backdrop-filter: blur(4px) saturate(130%);
+  -webkit-backdrop-filter: blur(4px) saturate(130%);
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  border-top: 1px solid rgba(255, 255, 255, 0.32);
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.25), inset 0 1px 1px 0 rgba(255, 255, 255, 0.18);
+}
+
+.glass-card-interactive {
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.glass-card-interactive:hover {
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.09) 0%, rgba(0, 0, 0, 0.22) 100%);
+  border-color: rgba(239, 68, 68, 0.4);
+  box-shadow: 0 12px 36px 0 rgba(0, 0, 0, 0.35);
+  transform: translateY(-1px);
+}
+
+/* Light Theme Card Overrides (Modern Frosted Glassmorphism) */
+[data-theme='light'] .glass-card {
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.82) 0%, rgba(255, 255, 255, 0.68) 100%) !important;
+  backdrop-filter: blur(16px) saturate(180%) !important;
+  -webkit-backdrop-filter: blur(16px) saturate(180%) !important;
+  border: 1px solid rgba(255, 255, 255, 0.85) !important;
+  border-top: 1px solid rgba(255, 255, 255, 0.95) !important;
+  border-bottom: 1px solid rgba(226, 232, 240, 0.7) !important;
+  box-shadow: 
+    0 10px 32px -4px rgba(24, 39, 75, 0.06),
+    0 2px 8px -2px rgba(24, 39, 75, 0.03),
+    inset 0 1px 1px 0 rgba(255, 255, 255, 0.9) !important;
+  border-radius: 1.25rem !important;
+}
+
+[data-theme='light'] .glass-card-interactive:hover {
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.95) 0%, rgba(255, 255, 255, 0.80) 100%) !important;
+  border-color: rgba(255, 91, 69, 0.45) !important;
+  box-shadow: 
+    0 16px 40px -4px rgba(255, 91, 69, 0.12),
+    0 4px 12px -2px rgba(24, 39, 75, 0.05),
+    inset 0 1px 1px 0 rgba(255, 255, 255, 1) !important;
+  transform: translateY(-2px);
+}
+
+/* ============================================================
+   Buttons
+   ============================================================ */
+
+.glass-btn-primary {
+  background: linear-gradient(180deg, rgba(220, 38, 38, 0.28) 0%, rgba(136, 19, 19, 0.16) 100%);
+  backdrop-filter: blur(4px) saturate(140%);
+  border: 1px solid rgba(239, 68, 68, 0.45);
+  color: #ffffff;
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.glass-btn-primary:hover:not(:disabled) {
+  background: linear-gradient(180deg, rgba(239, 68, 68, 0.4) 0%, rgba(185, 28, 28, 0.25) 100%);
+  border-color: rgba(239, 68, 68, 0.65);
+  transform: translateY(-1px);
+}
+
+/* Light Theme Primary Button (Warm Coral Sunset Gradient from Inspo) */
+[data-theme='light'] .glass-btn-primary {
+  background: linear-gradient(135deg, #FF5B45 0%, #FF7854 100%) !important;
+  backdrop-filter: none !important;
+  border: 1px solid rgba(255, 91, 69, 0.35) !important;
+  color: #FFFFFF !important;
+  box-shadow: 0 4px 16px 0 rgba(255, 91, 69, 0.28) !important;
+}
+[data-theme='light'] .glass-btn-primary:hover:not(:disabled) {
+  background: linear-gradient(135deg, #E84D37 0%, #FF6740 100%) !important;
+  border-color: #E84D37 !important;
+  box-shadow: 0 6px 20px 0 rgba(255, 91, 69, 0.38) !important;
+}
+
+.glass-btn-secondary {
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.10) 0%, rgba(0, 0, 0, 0.12) 100%);
+  backdrop-filter: blur(4px);
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  color: #ffffff;
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.glass-btn-secondary:hover:not(:disabled) {
+  background: rgba(255, 255, 255, 0.16);
+  transform: translateY(-1px);
+}
+
+/* Light Theme Secondary Button (Glassmorphic) */
+[data-theme='light'] .glass-btn-secondary {
+  background: rgba(241, 244, 249, 0.72) !important;
+  backdrop-filter: blur(12px) !important;
+  -webkit-backdrop-filter: blur(12px) !important;
+  border: 1px solid rgba(255, 255, 255, 0.8) !important;
+  color: #1A2238 !important;
+  box-shadow: 0 2px 8px rgba(24, 39, 75, 0.04) !important;
+}
+[data-theme='light'] .glass-btn-secondary:hover:not(:disabled) {
+  background: rgba(229, 235, 244, 0.9) !important;
+  border-color: rgba(203, 213, 225, 0.9) !important;
+  color: #1A2238 !important;
+}
+
+/* ============================================================
+   Tabs Navigation (Dark Crimson vs Light Inspo Warm Coral)
+   ============================================================ */
+
+.glass-tab-active {
+  background: linear-gradient(180deg, rgba(220, 38, 38, 0.28) 0%, rgba(136, 19, 19, 0.14) 100%);
+  border: 1px solid rgba(239, 68, 68, 0.45);
+  color: #ffffff;
+}
+
+.glass-tab-inactive {
+  color: rgba(255, 255, 255, 0.7);
+  border: 1px solid transparent;
+}
+.glass-tab-inactive:hover {
+  background: rgba(255, 255, 255, 0.08);
+  color: #ffffff;
+}
+
+/* Light Theme Navigation Pills (Inspo: Coral Gradient Active Pill with White Text) */
+[data-theme='light'] .glass-tab-active {
+  background: linear-gradient(135deg, #FF5B45 0%, #FF7854 100%) !important;
+  border-color: transparent !important;
+  color: #FFFFFF !important;
+  box-shadow: 0 4px 14px 0 rgba(255, 91, 69, 0.3) !important;
+}
+[data-theme='light'] .glass-tab-inactive {
+  background: transparent !important;
+  color: #334155 !important;
+  font-weight: 600 !important;
+}
+[data-theme='light'] .glass-tab-inactive:hover {
+  background: #E9EEF5 !important;
+  color: #1A2238 !important;
+}
+
+/* ============================================================
+   Global Light Theme Surface & Text Adaptations
+   ============================================================ */
+
+[data-theme='light'] {
+  background-color: #F6F8FB !important;
+  color: #1A2238 !important;
+}
+
+[data-theme='light'] body {
+  background: 
+    radial-gradient(circle at 10% 8%, rgba(255, 91, 69, 0.08) 0%, transparent 45%),
+    radial-gradient(circle at 90% 18%, rgba(255, 120, 84, 0.06) 0%, transparent 40%),
+    radial-gradient(circle at 50% 90%, rgba(255, 140, 105, 0.05) 0%, transparent 50%),
+    #F6F8FB !important;
+  background-attachment: fixed !important;
+  color: #1A2238 !important;
+}
+
+/* Hide or fade video background in light theme */
+[data-theme='light'] .app-video-bg {
+  opacity: 0 !important;
+  pointer-events: none !important;
+}
+
+/* Light Mode Global Text Harmonization (High-Contrast Rich Slate, Zero Faint Grey) */
+[data-theme='light'] .text-white,
+[data-theme='light'] .text-slate-100,
+[data-theme='light'] .text-slate-200,
+[data-theme='light'] .text-neutral-100,
+[data-theme='light'] .text-neutral-200 {
+  color: #1A2238 !important;
+}
+
+[data-theme='light'] .text-slate-300,
+[data-theme='light'] .text-neutral-300,
+[data-theme='light'] .text-slate-400,
+[data-theme='light'] .text-neutral-400 {
+  color: #334155 !important; /* Rich legible slate-700 */
+  font-weight: 500;
+}
+
+[data-theme='light'] .text-slate-500,
+[data-theme='light'] .text-neutral-500,
+[data-theme='light'] .text-neutral-600 {
+  color: #475569 !important; /* Solid legible slate-600 */
+  font-weight: 500;
+}
+
+/* Light Mode Input & Dropdown Fields (Glassmorphic) */
+[data-theme='light'] input,
+[data-theme='light'] select,
+[data-theme='light'] textarea {
+  background-color: rgba(255, 255, 255, 0.75) !important;
+  backdrop-filter: blur(8px) !important;
+  -webkit-backdrop-filter: blur(8px) !important;
+  border-color: #E2E8F0 !important;
+  color: #1A2238 !important;
+  box-shadow: 0 1px 2px rgba(24, 39, 75, 0.04) !important;
+}
+[data-theme='light'] input:focus,
+[data-theme='light'] select:focus,
+[data-theme='light'] textarea:focus {
+  border-color: #FF5B45 !important;
+  background-color: #FFFFFF !important;
+  box-shadow: 0 0 0 2px rgba(255, 91, 69, 0.2) !important;
+}
+
+/* Light Mode Overrides for Dark/Black Containers -> Clean Glassmorphic Surfaces */
+[data-theme='light'] .bg-neutral-950,
+[data-theme='light'] .bg-neutral-950\/95,
+[data-theme='light'] .bg-neutral-950\/98,
+[data-theme='light'] .bg-neutral-900,
+[data-theme='light'] .bg-neutral-900\/95,
+[data-theme='light'] .bg-neutral-900\/90,
+[data-theme='light'] .bg-neutral-900\/80,
+[data-theme='light'] .bg-neutral-900\/60,
+[data-theme='light'] .bg-neutral-900\/40,
+[data-theme='light'] .bg-neutral-900\/30,
+[data-theme='light'] .bg-neutral-800,
+[data-theme='light'] .bg-neutral-800\/60,
+[data-theme='light'] .bg-neutral-800\/50,
+[data-theme='light'] .bg-neutral-800\/40,
+[data-theme='light'] .bg-black\/75,
+[data-theme='light'] .bg-black\/60,
+[data-theme='light'] .bg-black\/55,
+[data-theme='light'] .bg-black\/50,
+[data-theme='light'] .bg-black\/45,
+[data-theme='light'] .bg-black\/40,
+[data-theme='light'] .bg-black\/35,
+[data-theme='light'] .bg-black\/30,
+[data-theme='light'] .bg-black\/20,
+[data-theme='light'] .bg-black\/15 {
+  background-color: rgba(255, 255, 255, 0.78) !important;
+  backdrop-filter: blur(12px) !important;
+  -webkit-backdrop-filter: blur(12px) !important;
+  border-color: rgba(226, 232, 240, 0.8) !important;
+  color: #1A2238 !important;
+}
+
+/* Light Mode Overrides for Hardcoded Red Elements -> Warm Coral Sunset */
+[data-theme='light'] .bg-red-600 {
+  background: linear-gradient(135deg, #FF5B45 0%, #FF7854 100%) !important;
+  color: #FFFFFF !important;
+}
+[data-theme='light'] .bg-red-500 {
+  background-color: #FF5B45 !important;
+  color: #FFFFFF !important;
+}
+[data-theme='light'] .bg-red-600\/20,
+[data-theme='light'] .bg-red-600\/25,
+[data-theme='light'] .bg-red-600\/30,
+[data-theme='light'] .bg-red-600\/35,
+[data-theme='light'] .bg-red-500\/10,
+[data-theme='light'] .bg-red-500\/20,
+[data-theme='light'] .bg-red-950\/20,
+[data-theme='light'] .bg-red-950\/30,
+[data-theme='light'] .bg-red-950\/40 {
+  background-color: #FFF0ED !important;
+}
+
+[data-theme='light'] .border-red-500,
+[data-theme='light'] .border-red-500\/20,
+[data-theme='light'] .border-red-500\/30,
+[data-theme='light'] .border-red-500\/35,
+[data-theme='light'] .border-red-500\/40,
+[data-theme='light'] .border-red-500\/50,
+[data-theme='light'] .border-red-500\/60,
+[data-theme='light'] .border-red-400\/40,
+[data-theme='light'] .border-red-400\/50,
+[data-theme='light'] .border-red-400\/60,
+[data-theme='light'] .border-red-600\/60 {
+  border-color: rgba(255, 91, 69, 0.35) !important;
+}
+
+[data-theme='light'] .text-red-600,
+[data-theme='light'] .text-red-500,
+[data-theme='light'] .text-red-400,
+[data-theme='light'] .text-red-300,
+[data-theme='light'] .text-red-200,
+[data-theme='light'] .text-rose-500,
+[data-theme='light'] .text-rose-400,
+[data-theme='light'] .text-rose-300,
+[data-theme='light'] .text-rose-200 {
+  color: #FF5B45 !important;
+}
+
+[data-theme='light'] .border-white\/10,
+[data-theme='light'] .border-white\/15,
+[data-theme='light'] .border-white\/20,
+[data-theme='light'] .border-white\/25,
+[data-theme='light'] .border-white\/5 {
+  border-color: #EEF2F6 !important;
+}
+
+/* Light Mode Header Bar (Frosted Glassmorphism) */
+[data-theme='light'] header {
+  background-color: rgba(255, 255, 255, 0.82) !important;
+  backdrop-filter: blur(20px) saturate(180%) !important;
+  -webkit-backdrop-filter: blur(20px) saturate(180%) !important;
+  border-bottom: 1px solid rgba(226, 232, 240, 0.8) !important;
+  box-shadow: 0 4px 20px -2px rgba(24, 39, 75, 0.04) !important;
+}
+
+/* Light Mode Footer Bar (Frosted Glassmorphism) */
+[data-theme='light'] footer {
+  background-color: rgba(255, 255, 255, 0.85) !important;
+  backdrop-filter: blur(20px) saturate(180%) !important;
+  -webkit-backdrop-filter: blur(20px) saturate(180%) !important;
+  border-top: 1px solid rgba(226, 232, 240, 0.8) !important;
+  box-shadow: 0 -4px 20px -2px rgba(24, 39, 75, 0.03) !important;
+}
+
+/* Light Mode Mobile Bottom Navigation (Frosted Glassmorphism) */
+[data-theme='light'] nav.mobile-bottom-nav {
+  background-color: rgba(255, 255, 255, 0.88) !important;
+  backdrop-filter: blur(20px) saturate(180%) !important;
+  -webkit-backdrop-filter: blur(20px) saturate(180%) !important;
+  border-top: 1px solid rgba(226, 232, 240, 0.8) !important;
+  box-shadow: 0 -6px 24px rgba(24, 39, 75, 0.07) !important;
+}
+
+/* Light Mode Desktop Nav Bar Container & Tabs Container (Frosted Glassmorphism) */
+[data-theme='light'] nav.desktop-nav-bar,
+[data-theme='light'] .glass-container {
+  background-color: rgba(241, 244, 249, 0.8) !important;
+  backdrop-filter: blur(12px) !important;
+  -webkit-backdrop-filter: blur(12px) !important;
+  border: 1px solid rgba(226, 232, 240, 0.8) !important;
+}
+
+/* Ensure buttons and badges with deliberate white text remain white */
+[data-theme='light'] .keep-white-text,
+[data-theme='light'] .brand-logo-badge,
+[data-theme='light'] .glass-tab-active,
+[data-theme='light'] .glass-btn-primary,
+[data-theme='light'] .active-dark-pill {
+  color: #FFFFFF !important;
+}
